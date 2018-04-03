@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>QuestionMaker</title>
+    <script src="./angular.js" charset="utf-8"></script>
+    <script src="./index.ng.js" charset="utf-8"></script>
+  </head>
+  <body ng-app="app" ng-controller="ctrl">
+    <div class="question">
+      <div class="title">{{questions[selectedQ].id+1}}</div>
+      <div class="content">{{questions[selectedQ].content}}</div>
+      <div class="questionnaires">
+        <!-- <div ng-repeat="sik in questions[selectedQ].questionnaires">{{sik.id}}</div> -->
+        <div ng-repeat="sik in questions[selectedQ].questionnaires">
+          <div ng-click="checkAnswer(sik.id)">
+            {{sik.id+")"+sik.text}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" ng-show="selectedQ>0" ng-click="prevQuestion()">Önceki Soru</button>
+    <button type="button" ng-show="selectedQ+1<questions.length" ng-click="nextQuestion()">Sonraki Soru</button>
+  </body>
+</html>
